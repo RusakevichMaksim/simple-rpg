@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { timeAtom, eventTimeAtom } from "../atom/index";
 
 export const useEventsHooks = () => {
-  const [time, setTime] = useState(0);
-  const [event, setEvent] = useState({ title: "" });
+  const [time, setTime] = useRecoilState(timeAtom);
+  const [event, setEvent] = useRecoilState(eventTimeAtom);
 
   function handleNextHour() {
     if (time >= 23) {
