@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/simple-rpg/static/css/main.e2769e8b.css",
-    "main.js": "/simple-rpg/static/js/main.17aa6b75.js",
+    "main.css": "/simple-rpg/static/css/main.9a78bff5.css",
+    "main.js": "/simple-rpg/static/js/main.94ef26e6.js",
     "static/js/787.5aa17033.chunk.js": "/simple-rpg/static/js/787.5aa17033.chunk.js",
     "index.html": "/simple-rpg/index.html",
-    "main.e2769e8b.css.map": "/simple-rpg/static/css/main.e2769e8b.css.map",
-    "main.17aa6b75.js.map": "/simple-rpg/static/js/main.17aa6b75.js.map",
+    "main.9a78bff5.css.map": "/simple-rpg/static/css/main.9a78bff5.css.map",
+    "main.94ef26e6.js.map": "/simple-rpg/static/js/main.94ef26e6.js.map",
     "787.5aa17033.chunk.js.map": "/simple-rpg/static/js/787.5aa17033.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2769e8b.css",
-    "static/js/main.17aa6b75.js"
+    "static/css/main.9a78bff5.css",
+    "static/js/main.94ef26e6.js"
   ]
 }
