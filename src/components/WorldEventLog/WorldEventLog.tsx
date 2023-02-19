@@ -8,10 +8,9 @@ export const WorldEventLog = () => {
 
   return (
     <div className="worldEventLog">
-      <div>
-        <h4>Event Description {time}</h4>
-        <p>{event.title}</p>
-      </div>
+      <div className="worldEventLog__title">Event Description {time}</div>
+
+      <div className="worldEventLog__text">{event.title}</div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import "./GameInterface.scss";
-import { Character, Battle, WorldEventLog } from "..";
+import { Character, Battle, WorldEventLog, Action } from "..";
 import { useEventsHooks } from "../../hooks";
 
 export const GameInterface = () => {
@@ -13,12 +13,10 @@ export const GameInterface = () => {
       </div>
       <div className="gameInterface__content">
         <WorldEventLog />
-        <Battle />
+        {/* <Battle /> */}
       </div>
       <div className="gameInterface__sidebar">
-        <h4>Actions</h4>
-        <button onClick={() => {}}>Equip Wizard Hat</button>
-        <button onClick={() => handleNextHour()}>Следующий час</button>
+        <Action handleNextHour={handleNextHour} />
       </div>
     </div>
   );
