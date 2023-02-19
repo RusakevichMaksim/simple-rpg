@@ -11,7 +11,7 @@ export const useEventsHooks = () => {
     } else {
       setTime(time + 1);
     }
-    const randomEvent = Math.floor(Math.random() * 23);
+    const randomEvent = Math.floor(Math.random() * 230);
     switch (randomEvent) {
       case 0:
         setEvent({ title: "Вы встретили курицу" });
@@ -136,7 +136,7 @@ export const useEventsHooks = () => {
         });
         break;
       default:
-        setEvent({ title: "..." });
+        setEvent({ title: "нечего интересного" });
     }
   }
 

@@ -1,34 +1,24 @@
 import React from "react";
 import "./GameInterface.scss";
-import { Character, Battle } from "..";
+import { Character, Battle, WorldEventLog } from "..";
 import { useEventsHooks } from "../../hooks";
 
 export const GameInterface = () => {
-  const { handleNextHour, event, time } = useEventsHooks();
+  const { handleNextHour } = useEventsHooks();
 
   return (
-    <div className="game-interface">
-      <div className="character-display">
+    <div className="gameInterface">
+      <div className="gameInterface__sidebar">
         <Character />
       </div>
-
-      <div className="event-description">
-        <div>
-          <h4>Event Description {time}</h4>
-          <p>{event.title}</p>
-        </div>
+      <div className="gameInterface__content">
+        <WorldEventLog />
         <Battle />
       </div>
-
-      <div className="actions">
+      <div className="gameInterface__sidebar">
         <h4>Actions</h4>
-        <button className="primary" onClick={() => {}}>
-          Equip Wizard Hat
-        </button>
-
-        <button className="secondary" onClick={() => handleNextHour()}>
-          Следующий день
-        </button>
+        <button onClick={() => {}}>Equip Wizard Hat</button>
+        <button onClick={() => handleNextHour()}>Следующий час</button>
       </div>
     </div>
   );

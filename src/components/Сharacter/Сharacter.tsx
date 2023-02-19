@@ -2,23 +2,39 @@ import "./Character.scss";
 
 export const Character = () => {
   return (
-    <div className="game-interface">
-      <div className="game-interface__header"></div>
-      <div className="game-interface__body">
-        <div className="character">
-          <div className="character__stats">
-            <div>Health: 100</div>
-            <div>Attack: 10</div>
-            <div>Defense: 5</div>
-          </div>
+    <div className="сharacter">
+      <div className="сharacter__userName">UserName</div>
+      <div className="сharacter__settings">
+        <div className="сharacter__settings-title">User сharacteristics</div>
+        <div className="сharacter__settings-item">
+          <div>strength</div>
+          <div>10</div>
         </div>
-        <div className="game-interface__text-area">
-          <p>Welcome to the game!</p>
+        <div className="сharacter__settings-item">
+          <div>agility</div>
+          <div>10</div>
         </div>
-        <div className="game-interface__action-area">
-          <button>Attack</button>
-          <button>Defend</button>
-          <button>Item</button>
+        <div className="сharacter__settings-item">
+          <div>intelligence</div>
+          <div>10</div>
+        </div>
+      </div>
+      <div className="сharacter__settings">
+        <div className="сharacter__settings-title">User Equpment</div>
+        <div className="сharacter__settings-item">
+          <div>Helmet</div> <div>0</div>
+        </div>
+        <div className="сharacter__settings-item">
+          <div>Body</div>
+          <div>0</div>
+        </div>
+        <div className="сharacter__settings-item">
+          <div>hands</div>
+          <div>0</div>
+        </div>
+        <div className="сharacter__settings-item">
+          <div>leghts</div>
+          <div>0</div>
         </div>
       </div>
     </div>

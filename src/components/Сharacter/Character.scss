@@ -1,0 +1,22 @@
+.сharacter {
+  padding-top: 20px;
+  &__userName {
+    font-size: 30px;
+    color: rgb(230, 235, 208);
+  }
+  &__settings {
+    text-align: start;
+    padding: 0px 20px;
+    margin-top: 20px;
+    &-title {
+      font-size: 25px;
+      padding-bottom: 10px;
+    }
+    &-item {
+      padding-bottom: 10px;
+      font-size: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
