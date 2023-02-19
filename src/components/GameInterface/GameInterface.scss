@@ -1,7 +1,7 @@
 .gameInterface {
   display: flex;
   background-color: black;
-  height: calc(100vh - 20px);
+  min-height: calc(100vh - 20px);
   color: white;
   margin: 10px;
   &__sidebar {

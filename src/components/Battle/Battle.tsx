@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Battle.scss";
+import { useSetRecoilState } from "recoil";
+import { eventTimeAtom } from "../../atom/eventTimeAtom";
+import { globalEventType } from "../../type/enum";
 
 type unutType = {
   heals: number;
@@ -10,8 +13,6 @@ type unutType = {
   type: string;
   id: number;
 };
-
-type enemysType = unutType[];
 
 const player = {
   heals: 100,
@@ -35,13 +36,14 @@ type logsType = {
 export const Battle = () => {
   const [logs, setLogs] = useState<Array<logsType | null | undefined>>([]);
   const [move, setMove] = useState(1);
+  const setEvent = useSetRecoilState(eventTimeAtom);
 
   const [unit, setUnit] = useState([
     player,
     {
       heals: 40,
       defense: 4,
-      damage: 5,
+      damage: 15,
       initiative: 5,
       name: "orcs",
       type: "enemy",
@@ -65,6 +67,15 @@ export const Battle = () => {
       type: "enemy",
       id: 4,
     },
+    // {
+    //   heals: 40000,
+    //   defense: 4,
+    //   damage: 150,
+    //   initiative: 1,
+    //   name: "dragon",
+    //   type: "enemy",
+    //   id: 5,
+    // },
   ]);
 
   const [queue, setQueue] = useState<unutType[]>([]);
@@ -148,14 +159,53 @@ export const Battle = () => {
   };
 
   const playerIndex = unit.map((e) => e.type).indexOf("player");
+  const playerItem = unit[playerIndex];
+
+  console.log(unit, "unit");
 
   return (
     <div className="battlle">
       <div className="battlle__title">Battle</div>
       <div className="battlle__title2">Ход {move}</div>
-      <div className="battlle__text">
-        {unit[playerIndex].name}: {unit[playerIndex].heals} HP
-      </div>
+
+      {playerItem?.heals <= 0 || !playerItem ? (
+        <div className="d-flex">
+          <button
+            onClick={() => {
+              window.location.reload();
+            }}
+            className="mr10 flexCenter  battlle__newGame"
+          >
+            NEW GAME
+          </button>
+          <div className="battlle__gameOver"> GAME END</div>
+        </div>
+      ) : (
+        <div className="battlle__text">
+          {player.name}: {player.heals} HP
+        </div>
+      )}
+      {unit.length === 1 && (
+        <div
+          onClick={() => {
+            console.log("new game");
+          }}
+          className="battlle__endFight"
+        >
+          <button
+            onClick={() => {
+              console.log("new game");
+              setEvent({
+                title: "конец битвы",
+                type: globalEventType.endBattle,
+              });
+            }}
+            className="mt10"
+          >
+            End fight
+          </button>
+        </div>
+      )}
       <div className="battlle__text">
         {unit.map((enemy, index) => {
           if (enemy.type === "player" || enemy.heals <= 0)

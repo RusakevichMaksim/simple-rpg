@@ -18,7 +18,7 @@ export const GameInterface = () => {
         {/*  */}
       </div>
       <div className="gameInterface__sidebar">
-        <Action handleNextHour={handleNextHour} />
+        <Action handleNextHour={handleNextHour} event={event} />
       </div>
     </div>
   );

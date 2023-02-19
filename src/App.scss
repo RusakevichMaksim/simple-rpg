@@ -41,9 +41,18 @@
   display: flex;
 }
 
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .ml5 {
   margin-left: 5px;
 }
 .mt10 {
   margin-top: 10px;
+}
+.mr10 {
+  margin-right: 10px;
 }
