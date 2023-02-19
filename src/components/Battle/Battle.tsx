@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "./Battle.scss";
+
 type unutType = {
   heals: number;
   defense: number;
@@ -148,22 +150,22 @@ export const Battle = () => {
   const playerIndex = unit.map((e) => e.type).indexOf("player");
 
   return (
-    <div>
-      <h1>Battle</h1>
-      <h2>Ход {move}</h2>
-      <p>
+    <div className="battlle">
+      <div className="battlle__title">Battle</div>
+      <div className="battlle__title2">Ход {move}</div>
+      <div className="battlle__text">
         {unit[playerIndex].name}: {unit[playerIndex].heals} HP
-      </p>
-      <ul>
+      </div>
+      <div className="battlle__text">
         {unit.map((enemy, index) => {
           if (enemy.type === "player" || enemy.heals <= 0)
             return <div key={`${index}`}></div>;
           return (
             <div key={`${index}`}>
-              <li>
-                <p>
+              <div className="battlle__enemy-wrapper">
+                <div>
                   {enemy.name}: {enemy.heals} HP
-                </p>
+                </div>
                 <button
                   onClick={() => {
                     Attack({ attackerId: player.id, defenderID: enemy.id });
@@ -173,20 +175,24 @@ export const Battle = () => {
                 >
                   Attack
                 </button>
-              </li>
+              </div>
             </div>
           );
         })}
-      </ul>
-      <div>
+      </div>
+      <div className="battlle__log-wrapper">
         {logs?.map((e, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="battlle__log-item">
               <div>
                 {e?.attacker.name} атакует {e?.defender.name}
               </div>
-              <div>{`${e?.oldHP}|${e?.newHP}`}</div>
-              {e?.dead && <div key={index}>{e?.defender.name} мертв</div>}
+              <div className="ml5">{`${e?.oldHP} | ${e?.newHP}`}</div>
+              {e?.dead && (
+                <div key={index} style={{ color: "red" }} className="ml5">
+                  {e?.defender.name} мертв
+                </div>
+              )}
             </div>
           );
         })}

@@ -2,9 +2,10 @@ import React from "react";
 import "./GameInterface.scss";
 import { Character, Battle, WorldEventLog, Action } from "..";
 import { useEventsHooks } from "../../hooks";
+import { globalEventType } from "../../type/enum";
 
 export const GameInterface = () => {
-  const { handleNextHour } = useEventsHooks();
+  const { handleNextHour, event } = useEventsHooks();
 
   return (
     <div className="gameInterface">
@@ -12,8 +13,9 @@ export const GameInterface = () => {
         <Character />
       </div>
       <div className="gameInterface__content">
-        <WorldEventLog />
-        {/* <Battle /> */}
+        {event.type === globalEventType.battle ? <Battle /> : <WorldEventLog />}
+
+        {/*  */}
       </div>
       <div className="gameInterface__sidebar">
         <Action handleNextHour={handleNextHour} />

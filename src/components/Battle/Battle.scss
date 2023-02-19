@@ -1,0 +1,38 @@
+.battlle {
+  padding: 20px;
+  &__title {
+    font-size: 30px;
+    color: #e6ebd0;
+    margin-bottom: 20px;
+  }
+  &__title2 {
+    font-size: 25px;
+    color: #e6ebd0;
+    margin-bottom: 20px;
+  }
+  &__text {
+    font-size: 20px;
+    text-align: start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+  }
+  &__enemy {
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0px;
+    }
+    &-outer {
+      display: flex;
+    }
+  }
+  &__log {
+    &-wrapper {
+      text-align: start;
+    }
+    &-item {
+      display: flex;
+      margin: 15px 0px;
+    }
+  }
+}
