@@ -1,4 +1,9 @@
-import { globalEventType } from "./enum";
+export enum globalEventType {
+  any = "any",
+  battle = "battle",
+  none = "none",
+  endBattle = "endBattle",
+}
 
 export type unutType = {
   heals: number;

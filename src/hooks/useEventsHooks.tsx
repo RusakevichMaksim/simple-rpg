@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { timeAtom, eventTimeAtom } from "../atom/index";
-import { globalEventType } from "../type/enum";
+import { globalEventType } from "../type/type";
 import { v4 as uuidv4 } from "uuid";
 
 export const useEventsHooks = () => {
@@ -195,7 +195,7 @@ export const useEventsHooks = () => {
               defense: 35,
               damage: 25,
               initiative: 4,
-              name: "Draron",
+              name: "Dragon",
               type: "enemy",
               id: uuidv4(),
             },

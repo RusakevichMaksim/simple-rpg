@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Battle.scss";
 import { useRecoilState } from "recoil";
 import { eventTimeAtom } from "../../atom/eventTimeAtom";
-import { globalEventType } from "../../type/enum";
-import { unutType } from "../../type/type";
+import { unutType, globalEventType } from "../../type/type";
 
 const player = {
   heals: 100,
@@ -28,8 +27,6 @@ export const Battle = () => {
   const [logs, setLogs] = useState<Array<logsType | null | undefined>>([]);
   const [move, setMove] = useState(1);
   const [event, setEvent] = useRecoilState(eventTimeAtom);
-
-  // console.log(event, "event");
 
   const enTemp = event?.enemy ? event?.enemy : [];
   const [unit, setUnit] = useState([player, ...enTemp]);
@@ -56,7 +53,6 @@ export const Battle = () => {
     if (index > 0) {
       updateQueue(clone, index);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queue]);
 
   const updateQueue = (clone: unutType[], index: number) => {

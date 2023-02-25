@@ -5,7 +5,9 @@ export const Character = () => {
     <div className="сharacter">
       <div className="сharacter__userName">UserName</div>
       <div className="сharacter__settings">
-        <div className="сharacter__settings-title">User сharacteristics</div>
+        <div className="сharacter__settings-title">
+          User сharacteristics (Not Active)
+        </div>
         <div className="сharacter__settings-item">
           <div>strength</div>
           <div>10</div>
@@ -20,7 +22,9 @@ export const Character = () => {
         </div>
       </div>
       <div className="сharacter__settings">
-        <div className="сharacter__settings-title">User Equpment</div>
+        <div className="сharacter__settings-title">
+          User Equpment (Not Active)
+        </div>
         <div className="сharacter__settings-item">
           <div>Helmet</div> <div>0</div>
         </div>

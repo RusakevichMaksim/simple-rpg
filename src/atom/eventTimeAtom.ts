@@ -1,6 +1,5 @@
 import { atom } from "recoil";
-import { globalEventType } from "../type/enum";
-import { eventType } from "../type/type";
+import { eventType, globalEventType } from "../type/type";
 
 export const eventTimeAtom = atom<eventType>({
   key: "eventTimeAtom", // unique ID (with respect to other atoms/selectors)
