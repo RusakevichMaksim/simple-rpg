@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Battle.scss";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { eventTimeAtom } from "../../atom/eventTimeAtom";
 import { globalEventType } from "../../type/enum";
-
-type unutType = {
-  heals: number;
-  defense: number;
-  damage: number;
-  initiative: number;
-  name: string;
-  type: string;
-  id: number;
-};
+import { unutType } from "../../type/type";
 
 const player = {
   heals: 100,
@@ -21,7 +12,7 @@ const player = {
   initiative: 15,
   name: "player",
   type: "player",
-  id: 1,
+  id: "1",
 };
 
 type logsType = {
@@ -36,47 +27,12 @@ type logsType = {
 export const Battle = () => {
   const [logs, setLogs] = useState<Array<logsType | null | undefined>>([]);
   const [move, setMove] = useState(1);
-  const setEvent = useSetRecoilState(eventTimeAtom);
+  const [event, setEvent] = useRecoilState(eventTimeAtom);
 
-  const [unit, setUnit] = useState([
-    player,
-    {
-      heals: 40,
-      defense: 4,
-      damage: 15,
-      initiative: 5,
-      name: "orcs",
-      type: "enemy",
-      id: 2,
-    },
-    {
-      heals: 12,
-      defense: 2,
-      damage: 5,
-      initiative: 12,
-      name: "goblin",
-      type: "enemy",
-      id: 3,
-    },
-    {
-      heals: 12,
-      defense: 1,
-      damage: 5,
-      initiative: 15,
-      name: "goblin2",
-      type: "enemy",
-      id: 4,
-    },
-    // {
-    //   heals: 40000,
-    //   defense: 4,
-    //   damage: 150,
-    //   initiative: 1,
-    //   name: "dragon",
-    //   type: "enemy",
-    //   id: 5,
-    // },
-  ]);
+  // console.log(event, "event");
+
+  const enTemp = event?.enemy ? event?.enemy : [];
+  const [unit, setUnit] = useState([player, ...enTemp]);
 
   const [queue, setQueue] = useState<unutType[]>([]);
 
@@ -115,8 +71,8 @@ export const Battle = () => {
     attackerId,
     defenderID,
   }: {
-    attackerId: number;
-    defenderID: number;
+    attackerId: string;
+    defenderID: string;
   }) => {
     const attackerIndex = unit.map((e) => e.id).indexOf(attackerId);
     const attacker = unit[attackerIndex];
@@ -124,7 +80,7 @@ export const Battle = () => {
     const defender = unit[defenderIndex];
     if (attacker?.heals <= 0 || defender?.heals <= 0 || !attacker || !defender)
       return;
-    const damage = attacker.damage - defender.defense;
+    const damage = Math.max(attacker.damage - defender.defense, 0);
 
     setUnit((prev) => {
       const new1 = prev
@@ -160,9 +116,7 @@ export const Battle = () => {
 
   const playerIndex = unit.map((e) => e.type).indexOf("player");
   const playerItem = unit[playerIndex];
-
-  console.log(unit, "unit");
-
+  console.log(playerItem, "playerItem");
   return (
     <div className="battlle">
       <div className="battlle__title">Battle</div>
@@ -182,7 +136,7 @@ export const Battle = () => {
         </div>
       ) : (
         <div className="battlle__text">
-          {player.name}: {player.heals} HP
+          {playerItem.name}: {playerItem.heals} HP
         </div>
       )}
       {unit.length === 1 && (

@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import { timeAtom, eventTimeAtom } from "../atom/index";
 import { globalEventType } from "../type/enum";
+import { v4 as uuidv4 } from "uuid";
 
 export const useEventsHooks = () => {
   const [time, setTime] = useRecoilState(timeAtom);
@@ -54,6 +55,26 @@ export const useEventsHooks = () => {
         setEvent({
           title: "Вы заблудились в лесу и не можете найти дорогу домой.",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 40,
+              defense: 4,
+              damage: 15,
+              initiative: 5,
+              name: "orcs",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 7:
@@ -68,6 +89,26 @@ export const useEventsHooks = () => {
           title:
             "Вы наткнулись на группу диких животных, которые напали на вас.",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 64,
+              defense: 4,
+              damage: 6,
+              initiative: 5,
+              name: "orcs",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 9:
@@ -87,6 +128,35 @@ export const useEventsHooks = () => {
         setEvent({
           title: "Вы наткнулись на группу разбойников",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 13:
@@ -94,6 +164,17 @@ export const useEventsHooks = () => {
           title:
             "Вам нужно доставить важный груз в дальний город, но на пути вас поджидают опасности.",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 22,
+              defense: 12,
+              damage: 15,
+              initiative: 22,
+              name: "goblinSuper",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 14:
@@ -108,6 +189,17 @@ export const useEventsHooks = () => {
           title:
             "Вы попали в драконью пещеру и теперь вам нужно выбраться, не попавшись на глаза дракону",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 452,
+              defense: 35,
+              damage: 25,
+              initiative: 4,
+              name: "Draron",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 16:
@@ -129,6 +221,35 @@ export const useEventsHooks = () => {
           title:
             "Вам нужно спасти заложника, которого держат в плену вражеские солдаты.",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 12,
+              defense: 2,
+              damage: 5,
+              initiative: 12,
+              name: "goblin",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 19:
@@ -136,6 +257,80 @@ export const useEventsHooks = () => {
           title:
             "Вы забрели на запретную территорию, где вас могут арестовать или убить.",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+            {
+              heals: 2,
+              defense: 0,
+              damage: 1,
+              initiative: 3,
+              name: "slime",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 20:
@@ -143,6 +338,17 @@ export const useEventsHooks = () => {
           title:
             "Вам предстоит пройти через болото, где обитают опасные существа.",
           type: globalEventType.battle,
+          enemy: [
+            {
+              heals: 99999,
+              defense: 9999,
+              damage: 99999,
+              initiative: 1,
+              name: "wednesday frog",
+              type: "enemy",
+              id: uuidv4(),
+            },
+          ],
         });
         break;
       case 21:
