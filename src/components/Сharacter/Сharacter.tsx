@@ -2,10 +2,12 @@ import "./Character.scss";
 
 import { useRecoilState } from "recoil";
 
-import { playerAtom } from "../../atom";
+import { playerAtom, userItemAtom } from "../../atom";
 
 export const Character = () => {
   const [player] = useRecoilState(playerAtom);
+  const [item] = useRecoilState(userItemAtom);
+  const [userItem] = useRecoilState(userItemAtom);
 
   return (
     <div className="сharacter">
@@ -18,7 +20,10 @@ export const Character = () => {
         </div>
         <div className="сharacter__settings-item">
           <div>Defense</div>
-          <div>{player.defense}</div>
+          <div>
+            {player.defense}+
+            {Object.values(userItem).reduce((acc, curr) => acc + curr, 0)}
+          </div>
         </div>
         <div className="сharacter__settings-item">
           <div>Damage</div>
@@ -30,23 +35,21 @@ export const Character = () => {
         </div>
       </div>
       <div className="сharacter__settings">
-        <div className="сharacter__settings-title">
-          User Equpment (Not Active)
-        </div>
+        <div className="сharacter__settings-title">User Equpment + def</div>
         <div className="сharacter__settings-item">
-          <div>Helmet</div> <div>0</div>
+          <div>Helmet</div> <div>{item.helmet} def</div>
         </div>
         <div className="сharacter__settings-item">
           <div>Body</div>
-          <div>0</div>
+          <div>{item.body} def</div>
         </div>
         <div className="сharacter__settings-item">
           <div>hands</div>
-          <div>0</div>
+          <div>{item.hands} def</div>
         </div>
         <div className="сharacter__settings-item">
-          <div>leghts</div>
-          <div>0</div>
+          <div>lights</div>
+          <div>{item.lights} def</div>
         </div>
       </div>
     </div>

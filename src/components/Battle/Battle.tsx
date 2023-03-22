@@ -3,7 +3,7 @@ import "./Battle.scss";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 
-import { eventTimeAtom, playerAtom } from "../../atom";
+import { eventTimeAtom, playerAtom, userItemAtom } from "../../atom";
 import { globalEventType, unitType } from "../../type/type";
 
 type logsType = {
@@ -20,9 +20,18 @@ export const Battle = () => {
   const [move, setMove] = useState(1);
   const [event, setEvent] = useRecoilState(eventTimeAtom);
   const [player, setPlayer] = useRecoilState(playerAtom);
+  const [userItem] = useRecoilState(userItemAtom);
 
   const enTemp = event?.enemy ? event?.enemy : [];
-  const [unit, setUnit] = useState([player, ...enTemp]);
+  const [unit, setUnit] = useState([
+    {
+      ...player,
+      defense:
+        player.defense +
+        Object.values(userItem).reduce((acc, curr) => acc + curr, 0),
+    },
+    ...enTemp,
+  ]);
 
   const [queue, setQueue] = useState<unitType[]>([]);
 
