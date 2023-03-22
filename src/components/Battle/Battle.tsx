@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
 import "./Battle.scss";
-import { useRecoilState } from "recoil";
-import { eventTimeAtom } from "../../atom/eventTimeAtom";
-import { unutType, globalEventType } from "../../type/type";
 
-const player = {
-  heals: 100,
-  defense: 2,
-  damage: 10,
-  initiative: 15,
-  name: "player",
-  type: "player",
-  id: "1",
-};
+import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+
+import { eventTimeAtom, playerAtom } from "../../atom";
+import { globalEventType, unitType } from "../../type/type";
 
 type logsType = {
-  attacker: unutType;
-  defender: unutType;
+  attacker: unitType;
+  defender: unitType;
   damage: number;
   newHP: number;
   oldHP: number;
@@ -27,17 +19,29 @@ export const Battle = () => {
   const [logs, setLogs] = useState<Array<logsType | null | undefined>>([]);
   const [move, setMove] = useState(1);
   const [event, setEvent] = useRecoilState(eventTimeAtom);
+  const [player, setPlayer] = useRecoilState(playerAtom);
 
   const enTemp = event?.enemy ? event?.enemy : [];
   const [unit, setUnit] = useState([player, ...enTemp]);
 
-  const [queue, setQueue] = useState<unutType[]>([]);
+  const [queue, setQueue] = useState<unitType[]>([]);
+
+  const playerIndex = unit.map((e) => e.type).indexOf("player");
+  const playerItem = unit[playerIndex];
+
+  const battleEndSucess = unit.length === 1 && playerItem?.heals > 0;
 
   useEffect(() => {
     if (queue.length === 0) {
       setQueue(queueCreate({ arr: unit }));
     }
   }, [move]);
+
+  useEffect(() => {
+    if (battleEndSucess) {
+      setPlayer(playerItem);
+    }
+  }, [unit.length]);
 
   useEffect(() => {
     const clone = JSON.parse(JSON.stringify(queue));
@@ -55,7 +59,7 @@ export const Battle = () => {
     }
   }, [queue]);
 
-  const updateQueue = (clone: unutType[], index: number) => {
+  const updateQueue = (clone: unitType[], index: number) => {
     const newQueue = clone.slice(index, clone.length);
     setQueue(newQueue);
     if (newQueue.length === 0) {
@@ -110,9 +114,6 @@ export const Battle = () => {
     });
   };
 
-  const playerIndex = unit.map((e) => e.type).indexOf("player");
-  const playerItem = unit[playerIndex];
-  console.log(playerItem, "playerItem");
   return (
     <div className="battlle">
       <div className="battlle__title">Battle</div>
@@ -135,7 +136,7 @@ export const Battle = () => {
           {playerItem.name}: {playerItem.heals} HP
         </div>
       )}
-      {unit.length === 1 && (
+      {battleEndSucess && (
         <div
           onClick={() => {
             console.log("new game");
@@ -201,13 +202,13 @@ export const Battle = () => {
   );
 };
 
-export const queueCreate = ({ arr }: { arr: unutType[] }) => {
-  const newArr: unutType[] = JSON.parse(
+export const queueCreate = ({ arr }: { arr: unitType[] }) => {
+  const newArr: unitType[] = JSON.parse(
     JSON.stringify(arr?.sort((a, b) => (a.initiative < b.initiative ? 1 : -1)))
   );
   const maxInitiative = Math.max(...newArr.map((obj) => obj.initiative));
   const minInitiative = Math.min(...newArr.map((obj) => obj.initiative));
-  const queue: unutType[] = [];
+  const queue: unitType[] = [];
 
   for (let i = 0; i < Math.floor(maxInitiative / minInitiative); i++) {
     newArr.map((e) => {

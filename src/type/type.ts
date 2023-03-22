@@ -5,8 +5,10 @@ export enum globalEventType {
   endBattle = "endBattle",
 }
 
-export type unutType = {
+export type unitType = {
   heals: number;
+  maxHeals: number;
+  regeneration: number;
   defense: number;
   damage: number;
   initiative: number;
@@ -18,5 +20,5 @@ export type unutType = {
 export type eventType = {
   title: string;
   type: globalEventType;
-  enemy?: unutType[];
+  enemy?: unitType[];
 };

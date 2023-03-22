@@ -1,24 +1,32 @@
 import "./Character.scss";
 
+import { useRecoilState } from "recoil";
+
+import { playerAtom } from "../../atom";
+
 export const Character = () => {
+  const [player] = useRecoilState(playerAtom);
+
   return (
     <div className="сharacter">
-      <div className="сharacter__userName">UserName</div>
+      <div className="сharacter__userName">{player.name}</div>
       <div className="сharacter__settings">
-        <div className="сharacter__settings-title">
-          User сharacteristics (Not Active)
+        <div className="сharacter__settings-title">User сharacteristics</div>
+        <div className="сharacter__settings-item">
+          <div>Heals</div>
+          <div>{player.heals}</div>
         </div>
         <div className="сharacter__settings-item">
-          <div>strength</div>
-          <div>10</div>
+          <div>Defense</div>
+          <div>{player.defense}</div>
         </div>
         <div className="сharacter__settings-item">
-          <div>agility</div>
-          <div>10</div>
+          <div>Damage</div>
+          <div>{player.damage}</div>
         </div>
         <div className="сharacter__settings-item">
-          <div>intelligence</div>
-          <div>10</div>
+          <div>Initiative</div>
+          <div>{player.initiative}</div>
         </div>
       </div>
       <div className="сharacter__settings">

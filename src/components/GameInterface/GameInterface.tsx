@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
 import "./GameInterface.scss";
-import { Character, Battle, WorldEventLog, Action } from "..";
+
+import React, { useEffect, useState } from "react";
+
 import { useEventsHooks } from "../../hooks";
-import { globalEventType } from "../../type/type";
+import { Action, Battle, Character, WorldEventLog } from "..";
 
 export const GameInterface = () => {
   const { handleNextHour, event } = useEventsHooks();

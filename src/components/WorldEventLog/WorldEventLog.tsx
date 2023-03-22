@@ -1,6 +1,8 @@
 import "./WorldEventLog.scss";
+
 import { useRecoilValue } from "recoil";
-import { timeAtom, eventTimeAtom } from "../../atom";
+
+import { eventTimeAtom, timeAtom } from "../../atom";
 
 export const WorldEventLog = () => {
   const time = useRecoilValue(timeAtom);

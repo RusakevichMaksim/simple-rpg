@@ -1,6 +1,6 @@
 import "./Action.scss";
-import { eventType } from "../../type/type";
-import { globalEventType } from "../../type/type";
+
+import { eventType, globalEventType } from "../../type/type";
 
 type ActionType = {
   handleNextHour: () => void;

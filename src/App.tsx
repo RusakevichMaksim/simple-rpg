@@ -1,8 +1,10 @@
-import React from "react";
 import "./App.scss";
 import "reset-css";
-import { GameInterface } from "./components";
+
+import React from "react";
 import { RecoilRoot } from "recoil";
+
+import { GameInterface } from "./components";
 
 function App() {
   return (

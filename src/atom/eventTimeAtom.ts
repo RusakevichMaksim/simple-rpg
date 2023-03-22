@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+
 import { eventType, globalEventType } from "../type/type";
 
 export const eventTimeAtom = atom<eventType>({

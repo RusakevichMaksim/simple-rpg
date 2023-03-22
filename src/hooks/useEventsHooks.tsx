@@ -1,13 +1,18 @@
 import { useRecoilState } from "recoil";
-import { timeAtom, eventTimeAtom } from "../atom/index";
-import { globalEventType } from "../type/type";
 import { v4 as uuidv4 } from "uuid";
+
+import { eventTimeAtom, playerAtom, timeAtom } from "../atom/index";
+import { globalEventType } from "../type/type";
+import { healing } from "../utils";
 
 export const useEventsHooks = () => {
   const [time, setTime] = useRecoilState(timeAtom);
   const [event, setEvent] = useRecoilState(eventTimeAtom);
+  const [player, setPlayer] = useRecoilState(playerAtom);
 
   function handleNextHour() {
+    healing({ unit: player, setUnit: setPlayer });
+
     if (time >= 23) {
       setTime(0);
     } else {
@@ -64,6 +69,8 @@ export const useEventsHooks = () => {
               name: "orcs",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 12,
@@ -73,6 +80,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
@@ -98,6 +107,8 @@ export const useEventsHooks = () => {
               name: "orcs",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 12,
@@ -107,6 +118,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
@@ -137,6 +150,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 12,
@@ -146,6 +161,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 12,
@@ -155,6 +172,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
@@ -173,6 +192,8 @@ export const useEventsHooks = () => {
               name: "goblinSuper",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
@@ -198,6 +219,8 @@ export const useEventsHooks = () => {
               name: "Dragon",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
@@ -230,6 +253,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 12,
@@ -239,6 +264,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 12,
@@ -248,6 +275,8 @@ export const useEventsHooks = () => {
               name: "goblin",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
@@ -266,6 +295,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 2,
@@ -275,6 +306,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 2,
@@ -284,6 +317,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 2,
@@ -293,6 +328,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 2,
@@ -302,6 +339,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 2,
@@ -311,6 +350,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 2,
@@ -320,6 +361,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
             {
               heals: 2,
@@ -329,6 +372,8 @@ export const useEventsHooks = () => {
               name: "slime",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
@@ -347,6 +392,8 @@ export const useEventsHooks = () => {
               name: "wednesday frog",
               type: "enemy",
               id: uuidv4(),
+              maxHeals: 1000,
+              regeneration: 0,
             },
           ],
         });
