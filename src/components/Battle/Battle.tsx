@@ -38,7 +38,7 @@ export const Battle = () => {
   const playerIndex = unit.map((e) => e.type).indexOf("player");
   const playerItem = unit[playerIndex];
 
-  const battleEndSucess = unit.length === 1 && playerItem?.heals > 0;
+  const battleEndSuccess = unit.length === 1 && playerItem?.heals > 0;
 
   useEffect(() => {
     if (queue.length === 0) {
@@ -47,8 +47,8 @@ export const Battle = () => {
   }, [move]);
 
   useEffect(() => {
-    if (battleEndSucess) {
-      setPlayer(playerItem);
+    if (battleEndSuccess) {
+      setPlayer({ ...player, heals: playerItem.heals });
     }
   }, [unit.length]);
 
@@ -145,7 +145,7 @@ export const Battle = () => {
           {playerItem.name}: {playerItem.heals} HP
         </div>
       )}
-      {battleEndSucess && (
+      {battleEndSuccess && (
         <div
           onClick={() => {
             console.log("new game");

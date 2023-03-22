@@ -64,7 +64,7 @@ const getStats = (enemyType: EnemyType): EnemyTypeWithStats => {
         heals: 10,
         regeneration: 1,
         defense: 1,
-        damage: 1,
+        damage: 3,
         initiative: 5,
       };
     case EnemyType.GOBLIN:
@@ -77,7 +77,7 @@ const getStats = (enemyType: EnemyType): EnemyTypeWithStats => {
         heals: 20,
         regeneration: 2,
         defense: 2,
-        damage: 3,
+        damage: 16,
         initiative: 8,
       };
     case EnemyType.ORC:
@@ -90,7 +90,7 @@ const getStats = (enemyType: EnemyType): EnemyTypeWithStats => {
         heals: 30,
         regeneration: 3,
         defense: 3,
-        damage: 5,
+        damage: 20,
         initiative: 12,
       };
     case EnemyType.DRAGON:
