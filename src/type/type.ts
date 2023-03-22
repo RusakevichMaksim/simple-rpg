@@ -22,3 +22,10 @@ export type eventType = {
   type: globalEventType;
   enemy?: unitType[];
 };
+
+export enum EnemyType {
+  SLIME = "slime",
+  GOBLIN = "goblin",
+  ORC = "orc",
+  DRAGON = "dragon",
+}
