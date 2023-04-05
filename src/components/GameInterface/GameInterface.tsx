@@ -6,7 +6,7 @@ import { useEventsHooks } from "../../hooks";
 import { Action, Battle, Character, WorldEventLog } from "..";
 
 export const GameInterface = () => {
-  const { handleNextHour, event } = useEventsHooks();
+  const { handleNextHour, event, player } = useEventsHooks();
   const [startBattle, setStartBattle] = useState(false);
   useEffect(() => {
     setStartBattle(false);
@@ -21,12 +21,26 @@ export const GameInterface = () => {
         {startBattle ? <Battle /> : <WorldEventLog />}
       </div>
       <div className="gameInterface__sidebar">
-        <Action
-          handleNextHour={handleNextHour}
-          event={event}
-          startBattle={startBattle}
-          setStartBattle={setStartBattle}
-        />
+        {player?.heals <= 0 ? (
+          <div className="d-flex">
+            <button
+              onClick={() => {
+                window.location.reload();
+              }}
+              className="mr10 flexCenter  battlle__newGame"
+            >
+              NEW GAME
+            </button>
+            <div className="battlle__gameOver"> GAME END</div>
+          </div>
+        ) : (
+          <Action
+            handleNextHour={handleNextHour}
+            event={event}
+            startBattle={startBattle}
+            setStartBattle={setStartBattle}
+          />
+        )}
       </div>
     </div>
   );

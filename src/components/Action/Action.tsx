@@ -3,7 +3,7 @@ import "./Action.scss";
 import { eventType, globalEventType } from "../../type/type";
 
 type ActionType = {
-  handleNextHour: () => void;
+  handleNextHour: (value: any) => void;
   event: eventType;
   setStartBattle: (value: boolean) => void;
   startBattle: boolean;
@@ -18,8 +18,9 @@ export const Action = ({
   return (
     <div className="action">
       <div className="action__title">Actions</div>
+
       {event.type !== globalEventType.battle ? (
-        <button onClick={() => handleNextHour()} className="action__button">
+        <button onClick={() => handleNextHour({})} className="action__button">
           Следующий час
         </button>
       ) : (
@@ -31,7 +32,16 @@ export const Action = ({
             >
               Битва
             </button>
-          )}
+          )}{" "}
+          <button
+            onClick={() => {
+              handleNextHour({ eventCount: 24 });
+              setStartBattle(false);
+            }}
+            className="action__button"
+          >
+            Убежать
+          </button>
         </>
       )}
     </div>

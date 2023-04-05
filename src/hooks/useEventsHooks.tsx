@@ -4,12 +4,15 @@ import { eventTimeAtom, playerAtom, timeAtom } from "../atom/index";
 import { EnemyType, globalEventType } from "../type/type";
 import { createEnemy, healing } from "../utils";
 
+type handleNextHourType = {
+  eventCount?: number;
+};
+
 export const useEventsHooks = () => {
   const [time, setTime] = useRecoilState(timeAtom);
   const [event, setEvent] = useRecoilState(eventTimeAtom);
   const [player, setPlayer] = useRecoilState(playerAtom);
-
-  function handleNextHour() {
+  function handleNextHour({ eventCount }: handleNextHourType) {
     healing({ unit: player, setUnit: setPlayer });
 
     if (time >= 23) {
@@ -18,7 +21,7 @@ export const useEventsHooks = () => {
       setTime(time + 1);
     }
     const randomEvent = Math.floor(Math.random() * 23);
-    switch (randomEvent) {
+    switch (eventCount ? eventCount : randomEvent) {
       case 0:
         setEvent({ title: "Вы встретили курицу", type: globalEventType.any });
         break;
@@ -197,10 +200,20 @@ export const useEventsHooks = () => {
           type: globalEventType.any,
         });
         break;
+      case 24:
+        console.log("aaaa");
+        setPlayer((prev) => {
+          return { ...prev, heals: prev.heals - 10 };
+        });
+        setEvent({
+          title: "Вы убегаете.",
+          type: globalEventType.run,
+        });
+        break;
       default:
         setEvent({ title: "нечего интересного", type: globalEventType.none });
     }
   }
 
-  return { handleNextHour, event, time };
+  return { handleNextHour, event, time, player };
 };

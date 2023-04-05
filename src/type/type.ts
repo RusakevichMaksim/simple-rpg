@@ -3,6 +3,8 @@ export enum globalEventType {
   battle = "battle",
   none = "none",
   endBattle = "endBattle",
+  quest = "quest",
+  run = "run",
 }
 
 export type unitType = {
