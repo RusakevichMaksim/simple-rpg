@@ -1,16 +1,13 @@
 import "./GameInterface.scss";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useEventsHooks } from "../../hooks";
+import { globalEventType } from "../../type/type";
 import { Action, Battle, Character, WorldEventLog } from "..";
 
 export const GameInterface = () => {
   const { handleNextHour, event, player } = useEventsHooks();
-  const [startBattle, setStartBattle] = useState(false);
-  useEffect(() => {
-    setStartBattle(false);
-  }, [event]);
 
   return (
     <div className="gameInterface">
@@ -18,7 +15,7 @@ export const GameInterface = () => {
         <Character />
       </div>
       <div className="gameInterface__content">
-        {startBattle ? <Battle /> : <WorldEventLog />}
+        {event.type === globalEventType.battle ? <Battle /> : <WorldEventLog />}
       </div>
       <div className="gameInterface__sidebar">
         {player?.heals <= 0 ? (
@@ -34,12 +31,7 @@ export const GameInterface = () => {
             <div className="battlle__gameOver"> GAME END</div>
           </div>
         ) : (
-          <Action
-            handleNextHour={handleNextHour}
-            event={event}
-            startBattle={startBattle}
-            setStartBattle={setStartBattle}
-          />
+          <Action handleNextHour={handleNextHour} event={event} />
         )}
       </div>
     </div>
