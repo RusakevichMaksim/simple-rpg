@@ -52,6 +52,12 @@ export const Character = () => {
           <div>{item.lights} def</div>
         </div>
       </div>
+      <div className="сharacter__settings">
+        <div className="сharacter__settings-title">User Spell</div>
+        <div className="сharacter__settings-item">
+          <div>Healing</div> <div>{item.helmet} count</div>
+        </div>
+      </div>
     </div>
   );
 };

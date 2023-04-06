@@ -24,7 +24,7 @@ export const Action = ({
           Следующий час
         </button>
       ) : (
-        <>
+        <div className="action__button-wrapper">
           {!startBattle && (
             <button
               onClick={() => setStartBattle(true)}
@@ -42,7 +42,7 @@ export const Action = ({
           >
             Убежать
           </button>
-        </>
+        </div>
       )}
     </div>
   );
